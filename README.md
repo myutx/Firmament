@@ -21,6 +21,13 @@ SPDX-License-Identifier: CC0-1.0
 
 </div>
 
+## Dye capture in this fork
+
+This fork adds an armor slot filter to the developer scanner.
+It also adds dye captures with timestamps.
+The optional preview recorder labels captures from Vincent's Dye Guide.
+Use the [dye capture guide](./docs/dye-capture.md) for the commands and output files.
+
 
 ## Currently working features
 

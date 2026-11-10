@@ -22,6 +22,7 @@ class NbtPrism(val path: List<String>) {
 			if (path is JsonArray) {
 				return NbtPrism(path.map { (it as JsonPrimitive).asString })
 			} else if (path is JsonPrimitive && path.isString) {
+				if (path.asString == ".") return NbtPrism(emptyList())
 				return NbtPrism(path.asString.split("."))
 			}
 			return null
@@ -34,7 +35,7 @@ class NbtPrism(val path: List<String>) {
 		}
 
 		override fun getExamples(): Collection<String?>? {
-			return listOf("some.nbt.path", "some.other.*", "some.path.*json.in.a.json.string")
+			return listOf(".", "some.nbt.path", "some.other.*", "some.path.*json.in.a.json.string")
 		}
 	}
 

@@ -37,6 +37,9 @@ object DeveloperFeatures {
 	@Config
 	object TConfig : ManagedConfig("developer", Category.DEV) {
 		val autoRebuildResources by toggle("auto-rebuild") { false }
+		var autoRecordDyePreviews by toggle("auto-record-dye-previews") { false }
+		val traceSelfKey by keyBindingWithDefaultUnbound("trace-self-key")
+		val traceTargetKey by keyBindingWithDefaultUnbound("trace-target-key")
 	}
 
 	var missingTranslations: Set<String>? = null

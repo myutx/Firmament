@@ -3,6 +3,7 @@ package moe.nea.firmament.mixins;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import moe.nea.firmament.events.EntityUpdateEvent;
+import moe.nea.firmament.features.debug.DyePacketArrival;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientCommonPacketListenerImpl;
 import net.minecraft.client.multiplayer.CommonListenerCookie;
@@ -33,7 +34,7 @@ public abstract class EntityUpdateEventListener extends ClientCommonPacketListen
 	@Inject(method = "handleSetEquipment", at = @At(value = "INVOKE", target = "Ljava/util/List;forEach(Ljava/util/function/Consumer;)V", shift = At.Shift.AFTER))
 	private void onEquipmentUpdate(ClientboundSetEquipmentPacket packet, CallbackInfo ci, @Local Entity entity) {
 		if (entity instanceof LivingEntity livingEntity)
-			EntityUpdateEvent.Companion.publish(new EntityUpdateEvent.EquipmentUpdate(livingEntity, packet.getSlots()));
+			EntityUpdateEvent.Companion.publish(new EntityUpdateEvent.EquipmentUpdate(livingEntity, packet.getSlots(), DyePacketArrival.receivedAt(packet)));
 	}
 
 	@Inject(method = "handleUpdateAttributes", at = @At("TAIL"))
